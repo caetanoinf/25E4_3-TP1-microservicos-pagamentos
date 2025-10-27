@@ -1,0 +1,21 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: orders-service
+
+payment:
+  service:
+    url: ${PAYMENT_SERVICE_URL:http://localhost:8081}
+
+---
+# Profile para Docker
+spring:
+  config:
+    activate:
+      on-profile: docker
+
+payment:
+  service:
+    url: ${PAYMENT_SERVICE_URL:http://payments-service:8081}
